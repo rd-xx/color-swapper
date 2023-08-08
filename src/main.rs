@@ -1,6 +1,7 @@
 mod helpers {
     pub mod config;
     pub mod file;
+    pub mod program;
 }
 
 fn main() {
@@ -26,4 +27,6 @@ fn main() {
 
         println!("File {} done.", path.split("/").last().unwrap());
     }
+
+    helpers::program::pause();
 }
