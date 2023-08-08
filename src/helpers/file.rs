@@ -36,3 +36,7 @@ pub fn read_file(path: &str) -> String {
 pub fn write_file(path: &str, content: &str) {
     fs::write(path, content).expect("Couldn't write the file");
 }
+
+pub fn delete_file(path: &str) {
+    fs::remove_file(path).expect("Couldn't delete the file");
+}

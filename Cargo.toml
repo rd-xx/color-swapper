@@ -6,5 +6,9 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-serde = { version = "1.0.183", features = ["derive"] }
+serde = { version = "1.0.181", features = ["derive"] }
 serde_json = "1.0.104"
+cairo-rs = "0.15.12"
+glib = "0.18.1"
+gio = "0.18.1"
+librsvg = { git = "https://gitlab.gnome.org/GNOME/librsvg", branch = "librsvg-2.55" }

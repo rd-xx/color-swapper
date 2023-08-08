@@ -2,6 +2,7 @@ mod helpers {
     pub mod config;
     pub mod file;
     pub mod program;
+    pub mod svg;
 }
 
 fn main() {
@@ -24,6 +25,8 @@ fn main() {
 
         let output_path = path.replace(&config.input_folder, &config.output_folder);
         helpers::file::write_file(&output_path, &file_content);
+        helpers::svg::convert(&output_path);
+        helpers::file::delete_file(&output_path);
 
         println!("File {} done.", path.split("/").last().unwrap());
     }
