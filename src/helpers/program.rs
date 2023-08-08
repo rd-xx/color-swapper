@@ -6,7 +6,7 @@ pub fn pause() {
     let mut stdout = io::stdout();
 
     // We want the cursor to stay at the end of the line, so we print without a newline and flush manually.
-    write!(stdout, "\nPress any key to continue...").unwrap();
+    write!(stdout, "\nPress enter to continue...").unwrap();
     stdout.flush().unwrap();
 
     // Read a single byte and discard
