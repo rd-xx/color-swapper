@@ -7,3 +7,7 @@ The reality is that this accepts any UTF8 text file and replaces a given text wi
 ### Why ?
 
 This could probably be done in 1 command in UNIX systems, but I wanted to learn Rust and this seemed like a good little project to start with.
+
+### How to use
+
+Soon™
