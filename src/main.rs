@@ -12,6 +12,8 @@ fn main() {
     helpers::file::ensure_dir(&config.output_folder);
     helpers::file::clear_dir(&config.output_folder);
 
+    helpers::program::greet(&config);
+
     let input_paths = helpers::file::read_dir(&config.input_folder);
     for path in input_paths {
         let mut file_content = helpers::file::read_file(&path);

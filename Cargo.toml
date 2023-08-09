@@ -12,3 +12,5 @@ cairo-rs = "0.15.12"
 glib = "0.18.1"
 gio = "0.18.1"
 librsvg = { git = "https://gitlab.gnome.org/GNOME/librsvg", branch = "librsvg-2.55" }
+colored = "2.0.4"
+dialoguer = "0.10.4"

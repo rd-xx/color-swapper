@@ -1,5 +1,26 @@
 use std::io;
 use std::io::prelude::*;
+use colored::*;
+use dialoguer::Confirm;
+use dialoguer::theme::ColorfulTheme;
+use crate::helpers::config::Config;
+use crate::helpers::file::read_dir;
+
+pub fn greet(config: &Config) {
+    println!("color-swapper v0.1.0");
+    println!("{}", "\nWelcome to color-swapper.".cyan());
+
+    let items = read_dir(&config.input_folder).len();
+    println!("Found {} items to swap.\n", format!("{}", items).yellow());
+
+    if !Confirm::with_theme(&ColorfulTheme::default())
+        .with_prompt("Do you want to continue?")
+        .interact()
+        .unwrap()
+    {
+        std::process::exit(0);
+    }
+}
 
 pub fn pause() {
     let mut stdin = io::stdin();
