@@ -7,7 +7,7 @@ use crate::helpers::config::Config;
 
 pub fn ask_convert() {
     if !Confirm::with_theme(&ColorfulTheme::default())
-        .with_prompt(format!("Do you want to convert the files to {}?", ".png".yellow()))
+        .with_prompt(format!("Do you want to convert the files to {}{}", ".png".yellow(), "?".bold()))
         .interact()
         .unwrap()
     {
