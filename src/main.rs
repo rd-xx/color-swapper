@@ -1,8 +1,10 @@
 mod helpers {
     pub mod config;
+    pub mod converter;
     pub mod file;
     pub mod program;
     pub mod svg;
+    pub mod swapper;
 }
 
 fn main() {
@@ -14,24 +16,11 @@ fn main() {
 
     helpers::program::greet(&config);
 
-    let input_paths = helpers::file::read_dir(&config.input_folder);
-    for path in input_paths {
-        let mut file_content = helpers::file::read_file(&path);
+    helpers::swapper::ask_swap();
+    helpers::swapper::swap(&config);
 
-        for color in &config.colors {
-            let from = &color.from;
-            let to = &color.to;
-
-            file_content = file_content.replace(from, to);
-        }
-
-        let output_path = path.replace(&config.input_folder, &config.output_folder);
-        helpers::file::write_file(&output_path, &file_content);
-        helpers::svg::convert(&output_path);
-        helpers::file::delete_file(&output_path);
-
-        println!("File {} done.", path.split("/").last().unwrap());
-    }
+    helpers::converter::ask_convert();
+    helpers::converter::convert(&config);
 
     helpers::program::pause();
 }
