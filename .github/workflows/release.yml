@@ -1,15 +1,19 @@
-name: Rust
+name: Release
 
 on:
   push:
-  pull_request:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 env:
   CARGO_TERM_COLOR: always
 
+
 jobs:
   release:
-    name: Build
+    name: Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -20,3 +24,8 @@ jobs:
 
       - name: Build
         run: cargo build --verbose
+
+      - name: Create Release Pull Request
+        uses: changesets/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
