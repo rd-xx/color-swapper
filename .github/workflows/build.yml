@@ -21,7 +21,8 @@ jobs:
         uses: rust-build/rust-build.action@v1.4.3
         with:
           RUSTTARGET: ${{ matrix.target }}
-          PRE_BUILD: ./.github/workflows/pre-build.sh
+          PRE_BUILD: ./.github/scripts/pre-build.sh
+          TOOLCHAIN_VERSION: stable
           UPLOAD_MODE: none
 
       - name: Upload artifact
