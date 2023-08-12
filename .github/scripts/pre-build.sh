@@ -1,4 +1,4 @@
 #!/bin/sh
 apk update
 apk add glib-dev
-apk add pango
+apk add pango-dev
