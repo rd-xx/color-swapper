@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-  pull_request:
+    branches: [main]
 
 jobs:
   build:
@@ -10,15 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [x86_64-pc-windows-gnu, x86_64-unknown-linux-musl, x86_64-apple-darwin]
+        target: [x86_64-unknown-linux-gnu, x86_64-pc-windows-gnu, x86_64-apple-darwin]
     steps:
       - uses: actions/checkout@master
+
+      - run: chmod +x ./.github/workflows/pre-build.sh
+
       - name: Compile
         id: compile
         uses: rust-build/rust-build.action@v1.4.3
         with:
           RUSTTARGET: ${{ matrix.target }}
+          PRE_BUILD: ./.github/workflows/pre-build.sh
           UPLOAD_MODE: none
+
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
