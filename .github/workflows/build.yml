@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - run: chmod +x ./.github/workflows/pre-build.sh
+      - run: chmod +x ./.github/scripts/pre-build.sh
 
       - name: Compile
         id: compile
